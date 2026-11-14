@@ -1,0 +1,487 @@
+<title>Jo'vontae Thompson Portfolio</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Anton&family=IBM+Plex+Mono:wght@400;500&family=Instrument+Sans:wght@400;500;600&display=swap">
+<style>
+/* Vice City-inspired theme: midnight violet ground, hot pink and teal neon, a sunset-orange sun.
+   Bold condensed display type for headings, clean sans for reading, mono for labels. */
+:root {
+  --bg: #120820;
+  --panel: #1d0f2e;
+  --line: #3b1f55;
+  --fg: #fff1f8;
+  --muted: #bfa3d1;
+  --accent: #ff2e97;
+  --teal: #19d3da;
+  --sun: #ff8a3d;
+  --display: "Anton", "Arial Narrow", sans-serif;
+  --text: "Instrument Sans", system-ui, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, monospace;
+  color-scheme: dark;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font-family: var(--text);
+  font-size: 15px;
+  line-height: 1.6;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+  padding-block: 24px 56px;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
+}
+.wrap { max-width: 980px; margin: 0 auto; position: relative; z-index: 1; }
+a { color: var(--teal); }
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--teal);
+  margin: 0 0 14px;
+}
+header.top {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: center;
+  gap: 12px 20px;
+  padding-bottom: 20px;
+  border-bottom: 1px solid var(--line);
+}
+.mark {
+  font-family: var(--display);
+  font-size: 26px;
+  letter-spacing: 0.02em;
+  color: var(--fg);
+  text-decoration: none;
+  text-shadow: 0 0 10px rgba(255,46,151,0.7);
+}
+nav { display: flex; flex-wrap: wrap; gap: 6px 18px; }
+nav a {
+  position: relative;
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+}
+nav a::after {
+  content: "";
+  position: absolute;
+  left: 0; bottom: -4px;
+  width: 0; height: 2px;
+  background: var(--accent);
+  box-shadow: 0 0 8px var(--accent);
+  transition: width 0.25s ease;
+}
+nav a:hover, nav a:focus-visible { color: var(--fg); }
+nav a:hover::after { width: 100%; }
+
+.hero { padding: 64px 0 56px; }
+.status {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-family: var(--mono);
+  font-size: 13px;
+  color: var(--fg);
+  border: 1px solid var(--teal);
+  border-radius: 999px;
+  padding: 6px 14px 6px 10px;
+  margin: 0 0 26px;
+  box-shadow: 0 0 14px rgba(25,211,218,0.25);
+}
+.dot {
+  width: 8px; height: 8px; border-radius: 50%;
+  background: var(--teal);
+  box-shadow: 0 0 0 4px rgba(25,211,218,0.2);
+  animation: pulse 1.8s ease-in-out infinite;
+}
+@keyframes pulse {
+  0%, 100% { box-shadow: 0 0 0 4px rgba(25,211,218,0.2); }
+  50% { box-shadow: 0 0 0 9px rgba(25,211,218,0.05), 0 0 14px rgba(25,211,218,0.8); }
+}
+h1 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(60px, 13vw, 140px);
+  line-height: 0.92;
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  margin: 0 0 24px;
+  text-wrap: balance;
+}
+h1 span {
+  background: linear-gradient(100deg, var(--sun) 0%, var(--accent) 45%, #ff7ad0 55%, var(--sun) 100%);
+  background-size: 250% 100%;
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0 0 12px rgba(255,46,151,0.55));
+  animation: shimmer 4s linear infinite, flicker 6s infinite;
+}
+@keyframes shimmer {
+  from { background-position: 150% 0; }
+  to { background-position: -50% 0; }
+}
+@keyframes flicker {
+  0%, 92%, 100% { opacity: 1; }
+  93% { opacity: 0.7; }
+  94% { opacity: 1; }
+  96% { opacity: 0.85; }
+}
+.lede {
+  font-size: clamp(17px, 2.2vw, 21px);
+  color: var(--fg);
+  max-width: 34em;
+  margin: 0 0 32px;
+  text-wrap: pretty;
+}
+.facts {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  gap: 12px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.facts li {
+  background: rgba(29,15,46,0.85);
+  border: 1px solid var(--line);
+  border-left: 3px solid var(--accent);
+  border-radius: 10px;
+  padding: 14px 16px;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.facts b {
+  display: block;
+  font-family: var(--display);
+  font-size: 22px;
+  font-weight: 400;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin-bottom: 2px;
+}
+.facts small { color: var(--muted); font-size: 13px; }
+
+section { padding: 56px 0 8px; border-top: 1px solid var(--line); }
+h2 {
+  font-family: var(--display);
+  font-weight: 400;
+  font-size: clamp(44px, 7vw, 66px);
+  letter-spacing: 0.01em;
+  text-transform: uppercase;
+  line-height: 1;
+  margin: 0 0 28px;
+  color: var(--fg);
+  text-shadow: 0 0 18px rgba(255,46,151,0.45);
+}
+
+.timeline { list-style: none; margin: 0; padding: 0; }
+.timeline li {
+  display: grid;
+  grid-template-columns: 150px 1fr;
+  gap: 4px 28px;
+  padding: 22px 0;
+  border-bottom: 1px solid var(--line);
+}
+.timeline li:first-child { padding-top: 0; }
+.when { font-family: var(--mono); font-size: 13px; color: var(--teal); padding-top: 3px; }
+.role {
+  font-family: var(--display);
+  font-size: 26px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin: 0 0 2px;
+  line-height: 1.1;
+}
+.org { color: var(--sun); margin: 0 0 8px; font-size: 14px; font-weight: 600; }
+.timeline p { margin: 0; color: var(--fg); opacity: 0.88; min-width: 0; }
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 16px;
+}
+.card {
+  background: rgba(29,15,46,0.85);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  min-width: 0;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+}
+.card h3 {
+  font-family: var(--display);
+  font-size: 30px;
+  font-weight: 400;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin: 0;
+  line-height: 1.05;
+}
+.card p { margin: 0; color: var(--muted); }
+.tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: auto; padding-top: 6px; }
+.tags span {
+  font-family: var(--mono);
+  font-size: 12px;
+  padding: 3px 8px;
+  border-radius: 6px;
+  background: #2a1240;
+  color: var(--teal);
+  border: 1px solid var(--line);
+  transition: border-color 0.2s ease, color 0.2s ease;
+}
+.tags span:hover { border-color: var(--accent); color: var(--fg); }
+.card:hover, .facts li:hover {
+  transform: translateY(-3px);
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent), 0 0 26px -4px rgba(255,46,151,0.6), 0 10px 30px -8px rgba(25,211,218,0.35);
+}
+
+.skills { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 0 40px; margin: 0; padding: 0; }
+.skills div { padding: 16px 0; border-bottom: 1px solid var(--line); }
+.skills dt { font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; color: var(--sun); margin-bottom: 6px; }
+.skills dd { margin: 0; }
+
+.contact p.lead {
+  font-family: var(--display);
+  font-size: clamp(34px, 6vw, 56px);
+  text-transform: uppercase;
+  line-height: 1.02;
+  margin: 0 0 24px;
+  max-width: 16em;
+  text-wrap: balance;
+}
+.copy-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 12px;
+  background: rgba(29,15,46,0.85);
+  border: 1px solid var(--teal);
+  border-radius: 12px;
+  padding: 12px 12px 12px 18px;
+  max-width: 100%;
+  box-shadow: 0 0 18px rgba(25,211,218,0.2);
+}
+.copy-row code {
+  font-family: var(--mono);
+  font-size: 15px;
+  overflow-x: auto;
+  min-width: 0;
+  flex: 1 1 200px;
+  color: var(--fg);
+}
+button {
+  font-family: var(--mono);
+  font-size: 13px;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  background: var(--accent);
+  color: #fff;
+  border: 0;
+  border-radius: 8px;
+  padding: 9px 14px;
+  cursor: pointer;
+  transition: box-shadow 0.2s ease, transform 0.1s ease;
+}
+button:hover { box-shadow: 0 0 18px 2px rgba(255,46,151,0.6); }
+button:active { transform: scale(0.97); }
+button:focus-visible, nav a:focus-visible, a:focus-visible { outline: 2px solid var(--teal); outline-offset: 3px; }
+footer {
+  margin-top: 56px;
+  font-family: var(--mono);
+  font-size: 12px;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+/* Scanlines over the whole page */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 50;
+  background: repeating-linear-gradient(to bottom, rgba(255,255,255,0.03) 0 1px, transparent 1px 3px);
+}
+
+/* Sunset backdrop: a retro sun on the horizon, neon glows and a perspective grid that drifts */
+body::before {
+  content: "";
+  position: fixed;
+  inset: -20%;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    radial-gradient(circle at 50% 78%, rgba(255,138,61,0.45) 0 14%, transparent 15%),
+    radial-gradient(circle at 15% 15%, rgba(255,46,151,0.22), transparent 42%),
+    radial-gradient(circle at 88% 65%, rgba(25,211,218,0.16), transparent 40%),
+    linear-gradient(rgba(255,46,151,0.12) 1px, transparent 1px) 0 0 / 56px 56px,
+    linear-gradient(90deg, rgba(255,46,151,0.12) 1px, transparent 1px) 0 0 / 56px 56px;
+  mask-image: radial-gradient(ellipse at 50% 40%, #000 30%, transparent 85%);
+  -webkit-mask-image: radial-gradient(ellipse at 50% 40%, #000 30%, transparent 85%);
+  animation: drift 24s ease-in-out infinite alternate;
+}
+@keyframes drift {
+  from { transform: translate(0, 0) scale(1); }
+  to { transform: translate(-3%, 2%) scale(1.06); }
+}
+
+/* Entrance animation: content rises in on load and settles into its normal, fully visible state */
+@keyframes rise {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: none; }
+}
+.status, h1, .lede, .facts li {
+  animation: rise 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.status { animation-delay: 0.05s; }
+h1 { animation-delay: 0.15s; }
+.lede { animation-delay: 0.3s; }
+.facts li:nth-child(1) { animation-delay: 0.4s; }
+.facts li:nth-child(2) { animation-delay: 0.5s; }
+.facts li:nth-child(3) { animation-delay: 0.6s; }
+section h2, .timeline li, .card, .skills div {
+  animation: rise 0.6s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.timeline li:nth-child(2) { animation-delay: 0.1s; }
+.timeline li:nth-child(3) { animation-delay: 0.2s; }
+.card:nth-child(2) { animation-delay: 0.1s; }
+.skills div:nth-child(2) { animation-delay: 0.05s; }
+.skills div:nth-child(3) { animation-delay: 0.1s; }
+.skills div:nth-child(4) { animation-delay: 0.15s; }
+.skills div:nth-child(5) { animation-delay: 0.2s; }
+
+@media (max-width: 600px) {
+  .timeline li { grid-template-columns: 1fr; gap: 2px; }
+  .when { padding-top: 0; }
+  .hero { padding: 40px 0 40px; }
+}
+@media (prefers-reduced-motion: reduce) { * { transition: none !important; animation: none !important; } }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <a class="mark" href="#top">JT</a>
+    <nav aria-label="Sections">
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+      <a href="https://github.com/Jovontho" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.linkedin.com/in/jovontaethompson" target="_blank" rel="noopener">LinkedIn</a>
+    </nav>
+  </header>
+
+  <div class="hero" id="top">
+    <div class="status"><span class="dot" aria-hidden="true"></span>Open to Help Desk and Desktop Support roles</div>
+    <p class="eyebrow">IT support · Orlando, Florida</p>
+    <h1>Jo'vontae<br><span>Thompson</span></h1>
+    <p class="lede">I keep people and systems running. I started in security at AdventHealth, moved into IT support, and I build my own projects on the side: a Java backend and a FiveM roleplay server.</p>
+    <ul class="facts">
+      <li><b>AdventHealth</b><small>Security Officer since Oct 2024</small></li>
+      <li><b>IT Support Intern</b><small>Jan to May 2026, Orange City</small></li>
+      <li><b>Computer Science</b><small>A.S. in progress, AI specialization</small></li>
+    </ul>
+  </div>
+
+  <section id="experience">
+    <h2>Experience</h2>
+    <ol class="timeline">
+      <li>
+        <div class="when">Jan – May 2026</div>
+        <div>
+          <h3 class="role">IT Support Specialist (Intern)</h3>
+          <p class="org">AdventHealth · Orange City, FL</p>
+          <p>Hands-on support work inside a large healthcare IT environment, learning how staff requests, systems and security fit together.</p>
+        </div>
+      </li>
+      <li>
+        <div class="when">Oct 2024 – Present</div>
+        <div>
+          <h3 class="role">Security Officer</h3>
+          <p class="org">AdventHealth · Orange City, FL</p>
+          <p>Full-time security role. Responsible for site safety, access and clear communication under pressure, skills that carry over directly to user-facing IT work.</p>
+        </div>
+      </li>
+      <li>
+        <div class="when">2026 – 2027</div>
+        <div>
+          <h3 class="role">A.S. Computer Science</h3>
+          <p class="org">Daytona State College · AI specialization</p>
+          <p>Building on the hands-on work above with coursework in programming, systems and artificial intelligence.</p>
+        </div>
+      </li>
+    </ol>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <div class="grid">
+      <article class="card">
+        <h3>Life Hub</h3>
+        <p>An all-in-one app for calendar, tasks, school, work and family chores in one place. Built as a full backend with a database behind it.</p>
+        <div class="tags"><span>Java</span><span>Spring Boot</span><span>MySQL</span></div>
+      </article>
+      <article class="card">
+        <h3>The Drop RP</h3>
+        <p>My FiveM roleplay server. I run the server through txAdmin on a Qbox framework, with a local MySQL database managed in Workbench.</p>
+        <div class="tags"><span>txAdmin</span><span>Qbox</span><span>XAMPP</span><span>MySQL</span></div>
+      </article>
+    </div>
+  </section>
+
+  <section id="skills">
+    <h2>Skills</h2>
+    <dl class="skills">
+      <div><dt>Support</dt><dd>Troubleshooting, desktop support, help desk ticketing and clear end-user communication</dd></div>
+      <div><dt>Security</dt><dd>Site safety and access control experience from full-time security work</dd></div>
+      <div><dt>Backend</dt><dd>Java, Spring Boot and MySQL database design</dd></div>
+      <div><dt>Game servers</dt><dd>FiveM and txAdmin server setup, Qbox framework, database administration with Workbench</dd></div>
+      <div><dt>Learning</dt><dd>Computer science coursework with an AI focus at Daytona State College</dd></div>
+    </dl>
+  </section>
+
+  <section class="contact" id="contact">
+    <h2>Contact</h2>
+    <p class="lead">Let's talk about a help desk or desktop support role.</p>
+    <div class="copy-row">
+      <code id="addr">Jovontho@outlook.com</code>
+      <button type="button" id="copy">Copy</button>
+    </div>
+    <p class="lead" style="font-size:18px;margin:24px 0 0;text-transform:none;font-family:var(--text);font-weight:600"><a href="https://github.com/Jovontho" target="_blank" rel="noopener">See my code on GitHub →</a></p>
+    <p class="lead" style="font-size:18px;margin:12px 0 0;text-transform:none;font-family:var(--text);font-weight:600"><a href="https://www.linkedin.com/in/jovontaethompson" target="_blank" rel="noopener">Connect with me on LinkedIn →</a></p>
+  </section>
+
+  <footer>© Jo'vontae Thompson · Orlando, FL</footer>
+</div>
+
+<script>
+(function () {
+  var btn = document.getElementById("copy");
+  var addr = document.getElementById("addr").textContent;
+  btn.addEventListener("click", function () {
+    try {
+      navigator.clipboard.writeText(addr).then(function () {
+        btn.textContent = "Copied";
+      }, function () {
+        btn.textContent = "Select to copy";
+      });
+    } catch (e) {
+      btn.textContent = "Select to copy";
+    }
+  });
+})();
+</script>
